@@ -18,6 +18,6 @@ proc mako::main { } {
 	
 	
 	# initialize gui
-	
+	mako::mainGui
 	
 }
