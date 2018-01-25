@@ -22,15 +22,15 @@ itcl::class mako::Grid {
 	private variable ystep 10
 	private variable lst_gridData {}; # must be private for data integrity
 	
-	constructor {m n xstep ystep} {
+	constructor {m n xs ys} {
 		set M $m
 		set N $n
-		set xstep $xstep
-		set ystep $ystep
+		set xstep $xs
+		set ystep $ys
 		initGridData
 	}
 	
-	destructor {} {}
+	destructor {}
 	
 	protected method initGridData {}
 	
