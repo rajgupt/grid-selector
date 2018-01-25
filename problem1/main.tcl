@@ -29,7 +29,7 @@ proc mako::mainGui { } {
 
 proc mako::main { } {
 	# create 10 X 10 grid of unit dimension  
-	set ::mako::gridObj [namespace current]::[mako::Grid #auto 10 10 1 1]
+	set ::mako::gridObj [namespace current]::[mako::Grid #auto 50 50 1 1]
 	# initialize gui
 	set frm [mako::mainGui]
 	set ::mako::guiObj [namespace current]::[mako::GridGui #auto $::mako::gridObj]
