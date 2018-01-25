@@ -1,5 +1,7 @@
 # Main Application 
 # TODO Describe the application and its features
+# 1. Grid Data Structure Implementation with Generic Definition ability
+# 2. Grid Gui Implementation with adaptive Gui to different Grid Size handling
 
 set scriptDir [file dir [info script]]
 source [file join $scriptDir "grid.tcl"]
