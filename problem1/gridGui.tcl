@@ -128,9 +128,21 @@ itcl::class ::mako::GridGuiProblem2 {
 		# $cv bind gridpt <ButtonPress-1> "$this onLeftClick $cv"
 		# TODO toggle
 		$cv bind gridpt <ButtonPress-1> "
-			$cv itemconfig current -fill blue;
-			$cv addtag marked withtag current;
+			$cv addtag curr withtag current;
+			$this toggleColor;
 		"
+	}
+	
+	method toggleColor { } {
+		if { [$cv itemcget curr -fill] eq "grey" } {
+			$cv itemconfig curr -fill blue;
+			$cv addtag marked withtag curr; # add to marked
+		} else {
+			$cv itemconfig curr -fill grey;
+			set item [$cv find withtag curr]
+			$cv dtag [lindex $item 0] marked; # remove from marked
+		}
+		$cv dtag curr
 	}
 	
 	method addButtons { } {
@@ -166,6 +178,7 @@ itcl::class ::mako::GridGuiProblem2 {
 		set ret [::mako::circleFitting [dict values $dict_marked]]
 		if { [llength $ret] eq 3 } {	
 			lassign $ret cx cy r
+			$cv delete fitCircle
 			$cv create oval [expr $cx-$r] [expr $cy-$r] [expr $cx+$r] [expr $cy+$r]\
 						-tags fitCircle -outline red
 		} else {
@@ -195,5 +208,3 @@ proc mako::createCircle { c x y } {
 				   [expr $mako::circle(xc)+$r] [expr $mako::circle(yc)+$r] \
 				   -tags circle -outline blue -width 3
 }
-
-

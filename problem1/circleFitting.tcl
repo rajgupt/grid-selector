@@ -5,7 +5,7 @@ namespace eval mako {}
 # minimize cost function by gradient descent method
 # ref: https://www.spaceroots.org/documents/circle/circle-fitting.pdf
 proc mako::circleFitting { lst_pts } {
-	# puts [info level 0]
+	puts [info level 0]
 	if { [llength $lst_pts] < 3 } { 
 		tk_messageBox -title "Info" -message "Need minimum 3 point to fit circle"
 		return
